@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-content: center;
+}
+
+.left-navbar {
+  height: 100%;
+  min-height: 100%;
+  width: 200px;
+  background-color: #00A843;
+  float: left;
+  text-align: center;
+  color: white;
+  .logo {
+    margin-top: 40px;
+  }
+}
+
+.main {
+  width: calc(100% - 200px);
+}
