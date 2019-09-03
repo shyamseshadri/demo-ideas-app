@@ -1,1 +1,10 @@
-<p>list works!</p>
+<h3>My Ideas</h3>
+<hr/>
+<app-item *ngFor="let idea of ideas" [idea]="idea"></app-item>
+
+<div *ngIf="ideas.length === 0">
+  <div><img src="assets/ideapool-icon.png"></div>
+  <h6>Got Ideas?</h6>
+</div>
+
+<button class="add-btn" mat-fab color="primary">+</button>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Idea } from 'src/app/model/idea';
 
 @Component({
   selector: 'app-list',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
+  public ideas: Idea[] = [];
   constructor() { }
 
   ngOnInit() {
