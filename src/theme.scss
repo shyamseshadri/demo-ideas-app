@@ -1,0 +1,41 @@
+@import '~@angular/material/theming';
+@include mat-core();
+/* For use in src/lib/core/theming/_palette.scss */
+$md-ideagreenpallete: (
+    50 : #e0f5e8,
+    100 : #b3e5c7,
+    200 : #80d4a1,
+    300 : #4dc27b,
+    400 : #26b55f,
+    500 : #00a843,
+    600 : #00a03d,
+    700 : #009734,
+    800 : #008d2c,
+    900 : #007d1e,
+    A100 : #aaffb7,
+    A200 : #77ff8c,
+    A400 : #44ff61,
+    A700 : #2aff4b,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$my-app-primary: mat-palette($md-ideagreenpallete);
+$my-app-accent:  mat-palette($mat-pink, 500, 900, A100);
+$my-app-warn:    mat-palette($mat-deep-orange);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);

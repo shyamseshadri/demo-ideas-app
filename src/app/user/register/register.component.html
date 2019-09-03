@@ -1,1 +1,41 @@
-<p>register works!</p>
+<div class="container">
+    <h2>Sign Up</h2>
+    <div>
+      <mat-form-field>
+        <input type="text"
+                placeholder="Name"
+                matInput
+                required
+                name="nameField"
+                id="nameField"
+                [(ngModel)]="name">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input type="email"
+               placeholder="Email"
+               matInput
+               email="true"
+               required
+               name="emailField"
+               id="emailField"
+               [(ngModel)]="email">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input type="password"
+               placeholder="Password"
+               matInput
+               required
+               name="passwordField"
+               id="passwordField"
+               [(ngModel)]="password">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-flat-button color="primary" type="submit">SIGN UP</button>
+      <span>Already have an account? <a routerLink="/login">Log in</a></span>
+    </div>
+  </div>
