@@ -1,5 +1,6 @@
 <div class="container">
     <h2>Sign Up</h2>
+    <form name="registerForm" (submit)="onRegister()">
     <div>
       <mat-form-field>
         <input type="text"
@@ -38,4 +39,5 @@
       <button mat-flat-button color="primary" type="submit">SIGN UP</button>
       <span>Already have an account? <a routerLink="/login">Log in</a></span>
     </div>
+    </form>
   </div>

@@ -1,5 +1,6 @@
 <div class="container">
   <h2>Log In</h2>
+  <form name="loginForm" (submit)="handleLogin()">
   <div>
     <mat-form-field>
       <input type="email"
@@ -27,4 +28,5 @@
     <button mat-flat-button color="primary" type="submit">LOG IN</button>
     <span>Don't have an account? <a routerLink="/register">Create an account</a></span>
   </div>
+  </form>
 </div>
