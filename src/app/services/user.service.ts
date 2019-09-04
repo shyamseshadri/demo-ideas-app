@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
-import { tap } from 'rxjs/operators';
+import { tap, mergeMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  private user: any;
 
   constructor(private http: HttpClient,
               private authService: AuthService) { }
@@ -17,11 +19,15 @@ export class UserService {
       email,
       password,
     }).pipe(
-      tap(response => this.authService.handleLogin(response))
+      tap(response => this.authService.handleLogin(response)),
+      mergeMap(() => this.fetchCurrentUser()),
+      tap((user) => {
+        this.authService.storeUserData(user);
+      })
     );
   }
 
-  getCurrentUser() {
+  fetchCurrentUser() {
     return this.http.get(environment.apiBaseUrl + '/me');
   }
 
@@ -31,7 +37,10 @@ export class UserService {
         refresh_token: this.authService.getRefreshToken(),
       },
     }).pipe(
-      tap(() => this.authService.handleLogout())
+      tap(() => {
+        this.user = null;
+        this.authService.handleLogout();
+      })
     );
   }
 
@@ -40,7 +49,13 @@ export class UserService {
       email,
       name,
       password,
-    });
+    }).pipe(
+      tap(response => this.authService.handleLogin(response)),
+      mergeMap(() => this.fetchCurrentUser()),
+      tap((user) => {
+        this.authService.storeUserData(user);
+      })
+    );
   }
 
   refreshToken() {

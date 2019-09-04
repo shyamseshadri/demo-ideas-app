@@ -3,6 +3,12 @@
   <div class="left-navbar">
     <img src="assets/ideapool-icon.png" class="logo">
     <h6>The Idea Pool</h6>
+    <hr>
+    <div *ngIf="userService.isLoggedIn() && authService.getUserData()">
+      <img class="gravatar" [src]="authService.getUserData().avatar_url">
+      <div class="name">{{authService.getUserData().name}}</div>
+      <div class="logout"><a routerLink="logout">Log out</a></div>
+    </div>
   </div>
 
   <div class="main">
