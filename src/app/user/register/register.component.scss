@@ -5,7 +5,16 @@
   mat-form-field {
     width: 100%;
   }
+  h2 {
+    font-size: 40px;
+    color: #2A3842;
+    font-weight: normal;
+  }
   button {
-    margin: 0 10px;
+    float: left;
+  }
+  span {
+    float: right;
+    line-height: 35px;
   }
 }

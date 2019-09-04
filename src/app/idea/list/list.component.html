@@ -79,6 +79,13 @@
     </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="average_score">
+    <mat-header-cell *matHeaderCellDef>Avg.</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{((element.confidence + element.ease + element.impact) / 3) | number}}
+    </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="buttons">
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
     <mat-cell *matCellDef="let element">

@@ -16,8 +16,17 @@
   .logo {
     margin-top: 40px;
   }
+  h6 {
+    margin: 0px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #FFFFFF;
+  }
 }
 
 .main {
   width: calc(100% - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
