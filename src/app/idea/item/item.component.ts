@@ -9,9 +9,13 @@ import { Idea } from 'src/app/model/idea';
 export class ItemComponent implements OnInit {
 
   @Input() public idea: Idea;
+  @Input() public isEditing = false;
   constructor() { }
 
   ngOnInit() {
   }
 
+  onIdeaSave() {
+
+  }
 }

@@ -11,7 +11,7 @@ export class IdeaService {
   constructor(private http: HttpClient) { }
 
   getIdeas(pageNumber: number = 1) {
-    return this.http.get(`${environment.apiBaseUrl}/ideas?page=${pageNumber}`);
+    return this.http.get<Idea[]>(`${environment.apiBaseUrl}/ideas?page=${pageNumber}`);
   }
 
   createIdea(idea: Idea) {

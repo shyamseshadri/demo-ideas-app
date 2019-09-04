@@ -26,6 +26,10 @@ export class AuthService {
     return localStorage.getItem(this.REFRESH_TOKEN);
   }
 
+  storeJwtToken(jwt) {
+    localStorage.setItem(this.JWT_TOKEN, jwt);
+  }
+
   private storeTokens(tokens) {
     localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
     localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh_token);

@@ -5,5 +5,6 @@ export interface Idea {
   ease: number;
   confidence: number;
   average_score?: number;
-  created_at: number;
+  created_at?: number;
+  editing?: boolean;
 }

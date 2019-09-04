@@ -46,7 +46,9 @@ export class UserService {
   refreshToken() {
     return this.http.post(environment.apiBaseUrl + '/access-tokens/refresh', {
       refresh_token: this.authService.getRefreshToken(),
-    });
+    }).pipe(
+      tap((response: any) => this.authService.storeJwtToken(response.jwt))
+    );
   }
 
   isLoggedIn() {

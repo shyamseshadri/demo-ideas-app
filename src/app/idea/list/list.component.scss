@@ -3,3 +3,20 @@
   top: 25px;
   right: 25px;
 }
+
+.content {
+  width: 400px;
+}
+
+.number {
+  width: 75px;
+}
+
+.mat-column-impact, .mat-column-ease, .mat-column-confidence {
+  width: 75px;
+  flex-grow: 0.33;
+}
+
+.select-box {
+  width: 75px;
+}

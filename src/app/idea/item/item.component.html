@@ -1,7 +1,88 @@
-<div>
-  <span class="content">{{idea.content}}</span>
-  <span class="number">{{idea.impact}}</span>
-  <span class="number">{{idea.ease}}</span>
-  <span class="number">{{idea.confidence}}</span>
-  <span class="number">{{idea.average_score}}</span>
-</div>
+<tr *ngIf="!isEditing">
+    <td class="content">{{idea.content}}</td>
+    <td class="number">{{idea.impact}}</td>
+    <td class="number">{{idea.ease}}</td>
+    <td class="number">{{idea.confidence}}</td>
+    <td class="number">{{idea.average_score}}</td>
+    <td>
+      <button mat-icon-button (click)="isEditing = true">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+</tr>
+<tr *ngIf="isEditing">
+  <form name="ideaForm" (submit)="onIdeaSave()">
+    <td class="content">
+      <mat-form-field>
+        <input type="text"
+               matInput
+               name="contentField"
+               placeholder="Content"
+               [(ngModel)]="idea.content"
+               required>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field>
+        <mat-label>Impact</mat-label>
+        <mat-select [(ngModel)]="idea.impact" name="impactSelect">
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="6">6</mat-option>
+          <mat-option value="7">7</mat-option>
+          <mat-option value="8">8</mat-option>
+          <mat-option value="9">9</mat-option>
+          <mat-option value="10">10</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field>
+        <mat-label>Ease</mat-label>
+        <mat-select [(ngModel)]="idea.ease" name="easeSelect">
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="6">6</mat-option>
+          <mat-option value="7">7</mat-option>
+          <mat-option value="8">8</mat-option>
+          <mat-option value="9">9</mat-option>
+          <mat-option value="10">10</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field>
+        <mat-label>Confidence</mat-label>
+        <mat-select [(ngModel)]="idea.confidence" name="confidenceSelect">
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="6">6</mat-option>
+          <mat-option value="7">7</mat-option>
+          <mat-option value="8">8</mat-option>
+          <mat-option value="9">9</mat-option>
+          <mat-option value="10">10</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+    <td>
+      <button mat-icon-button>
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button (click)="isEditing = false">
+        <mat-icon>close</mat-icon>
+      </button>
+    </td>
+  </form>
+</tr>

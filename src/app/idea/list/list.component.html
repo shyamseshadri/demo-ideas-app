@@ -1,10 +1,113 @@
 <h3>My Ideas</h3>
 <hr/>
-<app-item *ngFor="let idea of ideas" [idea]="idea"></app-item>
+<mat-table #table *ngIf="ideas.length > 0" [dataSource]="ideas">
+  <ng-container matColumnDef="content">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span *ngIf="!element.editing">{{element.content}}</span>
+      <mat-form-field *ngIf="element.editing">
+        <input type="text"
+                matInput
+                name="contentField"
+                placeholder="Content"
+                [(ngModel)]="element.content"
+                required>
+      </mat-form-field>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="impact">
+    <mat-header-cell *matHeaderCellDef>Impact</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span *ngIf="!element.editing">{{element.impact}}</span>
+      <mat-form-field class="select-box" *ngIf="element.editing">
+        <mat-select [(ngModel)]="element.impact" name="impactSelect">
+          <mat-option [value]="1">1</mat-option>
+          <mat-option [value]="2">2</mat-option>
+          <mat-option [value]="3">3</mat-option>
+          <mat-option [value]="4">4</mat-option>
+          <mat-option [value]="5">5</mat-option>
+          <mat-option [value]="6">6</mat-option>
+          <mat-option [value]="7">7</mat-option>
+          <mat-option [value]="8">8</mat-option>
+          <mat-option [value]="9">9</mat-option>
+          <mat-option [value]="10">10</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="ease">
+    <mat-header-cell *matHeaderCellDef>Ease</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span *ngIf="!element.editing">{{element.ease}}</span>
+      <mat-form-field class="select-box" *ngIf="element.editing">
+        <mat-select [(ngModel)]="element.ease" name="easeSelect">
+          <mat-option [value]="1">1</mat-option>
+          <mat-option [value]="2">2</mat-option>
+          <mat-option [value]="3">3</mat-option>
+          <mat-option [value]="4">4</mat-option>
+          <mat-option [value]="5">5</mat-option>
+          <mat-option [value]="6">6</mat-option>
+          <mat-option [value]="7">7</mat-option>
+          <mat-option [value]="8">8</mat-option>
+          <mat-option [value]="9">9</mat-option>
+          <mat-option [value]="10">10</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="confidence">
+    <mat-header-cell *matHeaderCellDef>Confidence</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span *ngIf="!element.editing">{{element.confidence}}</span>
+      <mat-form-field class="select-box" *ngIf="element.editing">
+        <mat-select  [(ngModel)]="element.confidence" name="confidenceSelect">
+          <mat-option [value]="1">1</mat-option>
+          <mat-option [value]="2">2</mat-option>
+          <mat-option [value]="3">3</mat-option>
+          <mat-option [value]="4">4</mat-option>
+          <mat-option [value]="5">5</mat-option>
+          <mat-option [value]="6">6</mat-option>
+          <mat-option [value]="7">7</mat-option>
+          <mat-option [value]="8">8</mat-option>
+          <mat-option [value]="9">9</mat-option>
+          <mat-option [value]="10">10</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="buttons">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span *ngIf="!element.editing">
+        <button mat-icon-button (click)="element.editing = true">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="promptDelete(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </span>
+      <span *ngIf="element.editing">
+        <button mat-icon-button (click)="saveIdea(element)">
+          <mat-icon>check</mat-icon>
+        </button>
+        <button mat-icon-button (click)="handleCancelEdit(element)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </span>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
 
 <div *ngIf="ideas.length === 0">
   <div><img src="assets/ideapool-icon.png"></div>
   <h6>Got Ideas?</h6>
 </div>
 
-<button class="add-btn" mat-fab color="primary">+</button>
+<button class="add-btn" mat-fab color="primary" (click)="addIdea()"><mat-icon>add</mat-icon></button>
