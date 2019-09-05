@@ -5,6 +5,7 @@
     <ng-container matColumnDef="content">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let element">
+        <span style="padding-right: 10px;">&#x2022;</span>
         <span *ngIf="!element.editing">{{element.content}}</span>
         <mat-form-field *ngIf="element.editing">
           <input type="text"
@@ -83,14 +84,14 @@
     <ng-container matColumnDef="average_score">
       <mat-header-cell *matHeaderCellDef>Avg.</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{((element.confidence + element.ease + element.impact) / 3) | number}}
+        {{((element.confidence + element.ease + element.impact) / 3) | number:'1.0-1'}}
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="buttons">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span *ngIf="!element.editing">
+        <span *ngIf="!element.editing" class="editing-btns">
           <button mat-icon-button (click)="element.editing = true">
             <mat-icon>edit</mat-icon>
           </button>
@@ -99,7 +100,7 @@
           </button>
         </span>
         <span *ngIf="element.editing">
-          <button mat-icon-button (click)="saveIdea(element)">
+          <button class="green" mat-icon-button (click)="saveIdea(element)">
             <mat-icon>check</mat-icon>
           </button>
           <button mat-icon-button (click)="handleCancelEdit(element)">

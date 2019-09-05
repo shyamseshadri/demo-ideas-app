@@ -33,13 +33,35 @@
     width: 75px;
   }
 
-  .mat-column-impact, .mat-column-ease, .mat-column-confidence {
+  .mat-column-impact, .mat-column-ease, .mat-column-confidence, .mat-column-average_score {
     width: 75px;
     flex-grow: 0.33;
+    mat-form-field {
+      width: 80%;
+    }
+  }
+
+  .mat-column-content {
+    flex-grow: 2;
+    mat-form-field {
+      width: 80%;
+    }
+  }
+
+  .editing-btns {
+    color: green;
+    opacity: 0;
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .select-box {
     width: 75px;
+  }
+
+  .green {
+    color: green;
   }
 }
 

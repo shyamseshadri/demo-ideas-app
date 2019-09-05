@@ -13,7 +13,7 @@ import { MatTable } from '@angular/material/table';
 export class ListComponent implements OnInit {
 
   public ideas: Idea[] = [];
-  public displayedColumns: string[] = ['content', 'impact', 'ease', 'confidence', 'buttons'];
+  public displayedColumns: string[] = ['content', 'impact', 'ease', 'confidence', 'average_score', 'buttons'];
 
   @ViewChild(MatTable, {static: false})
   private table: MatTable<any>;

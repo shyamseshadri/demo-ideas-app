@@ -19,7 +19,12 @@ export class IdeaService {
   }
 
   updateIdea(idea: Idea) {
-    return this.http.post(`${environment.apiBaseUrl}/ideas/${idea.id}`, idea);
+    return this.http.put(`${environment.apiBaseUrl}/ideas/${idea.id}`, {
+      content: idea.content,
+      impact: idea.impact,
+      ease: idea.ease,
+      confidence: idea.confidence,
+    });
   }
 
   deleteIdea(ideaId: string) {
